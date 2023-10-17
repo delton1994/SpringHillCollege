@@ -1,0 +1,30 @@
+<form *ngIf="Auth.user$ | async as user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <h3>Register Here</h3>
+    <label for="email">Email</label>
+    <input type="text" name="email" [(ngModel)]="form.email" required
+    #email="ngModel" [ngClass]="{'is-invalid': f.submitted && email.errors}">
+    <div *ngIf="email.errors && f.submitted" class="invalid-feedback">
+        Email is required!
+    </div>
+    <br>
+    <label for="username">Username</label>
+    <input  type="text" name="username" [(ngModel)]="form.username" required 
+    #username="ngModel" [ngClass]="{'is-invalid':f.submitted && username.errors}">
+    <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
+        Username is required!
+    </div>
+    <br>
+    <label for="password">Password</label>
+    <input type="password" name="password" [(ngModel)]="form.password" required
+     #password="ngModel" [ngClass]="{'is-invalid':f.submitted && password.errors}">
+     <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+        <div *ngIf="password.errors['required']">Password is required</div>
+        <div *ngIf="password.errors['minlength']">Password must be at least 6 charactersss</div>
+     </div>
+    <br>
+    <button type="submit">Register</button>
+    <div *ngIf="f.submitted && isLoginFailed" class="alert=danger" role="alert">Registation failed {{errorMessage}}</div>
+
+</form>
+
+<div class="alert alert-success" *ngIf="isLoggedIn"> Logged in as {{ roles}}</div>

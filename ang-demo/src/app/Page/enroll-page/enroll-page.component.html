@@ -1,0 +1,21 @@
+<form [formGroup] = "studentForm" (ngSubmit) = "onAddstudent()">
+    <div class="title">
+    <h3>Enroll Here</h3>
+    </div>
+    <label for="name">Name</label>
+    <input  type="text" formControlName="name">
+    <br>
+    <label for="email">Email</label>
+    <input type="text" formControlName="email">
+    <br>
+    <label for="phone">Phone</label>
+    <input type="text" formControlName="phone">
+    <br>
+    <label for="major">Major</label>
+    <input type="text" formControlName="major">
+    <br>
+    <label for="dob">Date of Birth</label>
+    <input type="Date" formControlName="dob">
+    <br>
+    <button type="submit" >Enroll</button>
+</form>
